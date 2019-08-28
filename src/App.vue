@@ -15,13 +15,25 @@
 								<a href="#/Users">รับฝากเอกสาร</a>
 							</li>
 							<li class="list-group-item">
-								<a href="#" v-on:click="editMenu()">จัดการตั้งค่า</a>
+								<a href="#" v-on:click="editMenu()">จัดการข้อมูล</a>
 									<ul class="list-group " v-if="show">
 										<li class="list-group-item">
-											<a href="Users">Visit our HTML tutorial</a>
+											<a href="Users">ข้อมูลพนักงาน</a>
 										</li>
 										<li  class="list-group-item">
-											<a href="Users">Visit our HTML tutorial</a>
+											<a href="Users">ข้อมูลลูกค้า</a>
+										</li>
+										<li  class="list-group-item">
+											<a href="Users">ข้อมูลกล่องสิ้นค้า</a>
+										</li>
+										<li  class="list-group-item">
+											<a href="Users">ข้อมูลที่จัดเก็บ</a>
+										</li>
+										<li  class="list-group-item">
+											<a href="Users">ข้อมูลส่วนลด</a>
+										</li>
+										<li  class="list-group-item">
+											<a href="Users">ข้อมูลการรับฝาก</a>
 										</li>
 									</ul>
 							</li>
