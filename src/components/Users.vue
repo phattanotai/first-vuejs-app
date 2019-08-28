@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <div class="card"  style="width: 60%;margin: auto;">
+      <div class="card" >
         <div class="card-body" >
             <div style="text-align: center;">
                <label >
@@ -85,12 +85,10 @@
 
 <script >
     import axios from 'axios'
-
-
     export default {
         data(){
            return{
-              userData:null,
+              userData:'',
               firstname:'',
               lastname:'',
               gender:'',
@@ -228,10 +226,6 @@
               }
           }
         }
-
-
-
-
     }
 </script>
 
