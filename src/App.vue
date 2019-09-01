@@ -1,48 +1,55 @@
 <template>
   <div id="app">
-  		<nav class='navbar navbar-expand-sm bg-dark navbar-dark'>
+  		<nav class='navbar navbar-expand-sm bg-dark navbar-dark fixed-top'>
 		  <a class="navbar-brand" href="#">Logo</a>
 		</nav>
-	
-		<div class="row">
-			<div class="col-sm-2 menu">
-				<div class = 'menu-list'>
-					<ul class="list-group list-group-flush">
-							<li class="list-group-item">
-								<a href="/#/">หน้าหลัก</a>
-							</li>
-							<li class="list-group-item">
-								<a href="#/Users">รับฝากเอกสาร</a>
-							</li>
-							<li class="list-group-item">
-								<a href="#" v-on:click="editMenu()">จัดการข้อมูล</a>
-									<ul class="list-group " v-if="show">
-										<li class="list-group-item">
-											<a href="Users">ข้อมูลพนักงาน</a>
-										</li>
-										<li  class="list-group-item">
-											<a href="Users">ข้อมูลลูกค้า</a>
-										</li>
-										<li  class="list-group-item">
-											<a href="Users">ข้อมูลกล่องสิ้นค้า</a>
-										</li>
-										<li  class="list-group-item">
-											<a href="Users">ข้อมูลที่จัดเก็บ</a>
-										</li>
-										<li  class="list-group-item">
-											<a href="Users">ข้อมูลส่วนลด</a>
-										</li>
-										<li  class="list-group-item">
-											<a href="Users">ข้อมูลการรับฝาก</a>
-										</li>
-									</ul>
-							</li>
-					</ul>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3 menu">
+					<div >
+						<div class="alert alert-primary" >					
+								<h6> เมนูหลัก</h6>				
+						</div>
+						<div class = 'menu-list'>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">
+									<a  href="#/">หน้าหลัก</a>
+								</li>
+								<li class="list-group-item">
+									<a  href="#/Product">รับฝากเอกสาร</a>
+								</li>
+							</ul>
+						</div>
+						<div  class="alert alert-primary" style="margin-top:15px;">
+								<h6>จัดการข้อมูล</h6>
+						</div>
+						<div class = 'menu-list'>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">
+									<a href="#/Employee">ข้อมูลพนักงาน</a>
+								</li>
+								<li  class="list-group-item ">
+									<a   href="#/Customers">ข้อมูลลูกค้า</a>
+								</li>
+								<li  class="list-group-item">
+									<a  href="#/Boxes">ข้อมูลกล่องสินค้า</a>
+								</li>
+								<li  class="list-group-item">
+									<a  href="#/Storage">ข้อมูลที่จัดเก็บ</a>
+								</li>
+								<li  class="list-group-item">
+									<a  href="#/Promotion">ข้อมูลส่วนลด</a>
+								</li>
+								<li  class="list-group-item">
+									<a  href="#/Product">ข้อมูลการรับฝาก</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
-			</div>
-			
-			<div class="col-sm-10" style="padding:0px;">
-         		<router-view/>
+				<div class="col-sm-9" style="padding:0px;">
+					<router-view/>
+				</div>
 			</div>
 		</div>
     </div>
@@ -55,18 +62,11 @@ export default {
   name: 'App',
   data(){
 		return{
-			show:false,
+			
 		}
   },
   methods:{
-	  editMenu:function(){
-		  if(this.show){
-			  this.show = false;
-		  }else{
-			  this.show = true;
-		  }
-		  
-	  }
+	  
   },
   components:{
 
@@ -81,6 +81,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 0px;
+  background-color:honeydew;
 }
 
 .header{
@@ -93,33 +94,51 @@ export default {
 	max-width: 100%;
 }
 .container{
-	padding-top: 1%;
 	background-color:honeydew;
 }
 .card{
    width: 95%;
    margin: auto;
+   border: 1px solid DodgerBlue;
 }
 .menu{
-	background-color: #2c3e50;
 	padding: 0%;
 	color: white;
+	margin-top: 12%;
+	
 }
-
 .menu ul{
 	list-style: none;
-	right: 0px;
-	padding-left: 4%;
+	text-align: right;
 }
 .menu ul li{
-	background-color: #2c3e50;
 	display: inline-block;
 	text-decoration: none;
 	text-decoration-line: none;
+	background-color:honeydew;
+}
+.menu ul li a{
+	color: black;
+	font-size: 14px;
+}
+.menu ul li a:hover{
+	color:blue;
 	font-size: 16px;
+	text-decoration: none;
 }
 
-.menu ul li a{
-	color: white;
+.menu ul li:hover{
+	background-color:lightgrey;
+}
+.menu-list{
+	width: 100%;
+	margin: auto;
+}
+.menu h6{
+	text-align: center;
+}
+.main{
+	margin-top: 7%;
+	margin-bottom: 5%;
 }
 </style>

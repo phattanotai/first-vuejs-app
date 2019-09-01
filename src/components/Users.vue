@@ -1,85 +1,31 @@
 <template>
-  <div class="container">
-      <div class="card" >
-        <div class="card-body" >
-            <div style="text-align: center;">
-               <label >
-              <h3 >เพิ่ม แก้ไข ค้นหา ข้อมูลผู้ใช้</h3>
-            </label>
-            </div>
-            <form class="form-horizontal" autocomplete = "off">
-                <div class="form-group">
-                  <label class="control-label col-sm-2" for="firstname">ชื่อ:</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="firstname" v-model="firstname">
-                  </div>
+  <div class="main">
+      <div class="login" >
+          <div style="text-align: center;">
+              <label >
+            <h3 >เข้าสู่ระบบ</h3>
+          </label>
+          </div>
+          <form class="form-horizontal " autocomplete = "off">
+              <div class="form-group row justify-content-center">
+                <label class="control-label col-lg-2" for="username">ชื่อผู้ใช้:</label>
+                <div class="col-lg-6 col-sm-12 ">
+                  <input type="text" class="form-control" id="username" v-model="username">
                 </div>
-                <div class="form-group">
-                  <label class="control-label col-sm-2" for="lastname">นามสกุล:</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="lastname" v-model="lastname">
-                  </div>
+              </div>
+              <div class="form-group row justify-content-center">
+                <label class="control-label col-lg-2 " for="password">รหัสผ่าน:</label>
+                <div class="col-lg-6 col-sm-12">
+                  <input type="text" class="form-control" id="password" v-model="password">
                 </div>
-                <div class="form-group">
-                  <label class="control-label col-sm-2" for="gender">เพศ:</label>
-                  <div class="col-sm-10">
-                    <input type="radio" name="sex" value="male"   v-model="gender">ชาย
-                    <input type="radio" name="sex" value="female" v-model="gender">หญิง
-                  </div>
+              </div>
+              <div class="form-group row justify-content-center" >
+                <div class="col-lg-4 col-sm-12 " >
+                  <button type="button" class="btn btn-primary" v-on:click="save()" >เข้าสู่ระบบ</button>
                 </div>
-                <div class="form-group">
-                  <label class="control-label col-sm-2" for="email">อีเมล</label>
-                  <div class="col-sm-10">
-                      <input type="text" class="form-control" id="email" v-model="email">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="control-label col-sm-2" for="age">อายุ:</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="age" v-model="age">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <button type="button" class="btn btn-primary" v-on:click="save()" >บันทึก</button>
-                    <button type="button" class="btn btn-warning" v-on:click="search()" >ค้นหา</button>
-                    <button type="button" class="btn btn-success" v-on:click="edit()" >แก้ไข</button>
-                    <button type="button" class="btn btn-info" v-on:click="reset()" >ล้าง</button>
-                  </div>
-                </div>
-             </form>
-        </div>
+              </div>
+            </form>
       </div>
-      <div class="table-responsive " style="margin: auto;margin-top: 2%">
-            <table class="table" v-if="userData != null">
-              <thead>
-                <tr>
-                    <th>#</th>
-                    <th>ชื่อ-นามสกุล</th>
-                    <th>เพศ</th>
-                    <th>อีเมล</th>
-                    <th>อายุ</th>
-                    <th>แก้ไข/ลบ</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr v-for="i in userData">
-                    <td> {{i.id}}</td>
-                    <td>  {{i.firstname}} {{i.lastname}} </td>
-                    <td> {{i.gender}} </td>
-                    <td> {{i.email}} </td>
-                    <td> {{i.age}} </td>
-                    <td>
-                       <button type="button" class="btn btn-warning" v-on:click="setForm()" >แก้ไข</button>
-                       <button type="button" class="btn btn-danger" v-on:click="deleteUser(i.id)" >ลบ</button>
-                    </td>
-                  </tr>
-              </tbody>
-            </table>
-    </div>
-
-
-
   </div>
 </template>
 
@@ -229,7 +175,10 @@
     }
 </script>
 
-
 <style scoped>
+.login{
+  margin-top:15% ;
+
+}
 
 </style>

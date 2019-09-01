@@ -8,11 +8,17 @@
         <div class="card-body" >
             <div v-if="show">
               <label >
-                <h5>เพิ่ม/แก้ไข  ข้อมูลลูกค้า</h5>
+                <h5>เพิ่ม/แก้ไข  ข้อมูลส่วนลด</h5>
               </label>
               <hr>
               <form class="form-horizontal " autocomplete = "off"  >
                 <div >
+                  <div class="form-group">
+                    <label class="control-label col-sm-4" for="id">รหัสประจำตัว:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="id" v-model="id">
+                    </div>
+                  </div>
                   <div class="form-group">
                     <label class="control-label col-sm-4" for="name">ชื่อ:</label>
                     <div class="col-sm-10">
@@ -34,23 +40,15 @@
                   </div>
                   <div class="form-group">
                     <label class="control-label col-sm-4" for="email" >อีเมล:</label>
-                    <div class="col-sm-5">
+                    <div class="col-sm-10">
                         <input type="text" class="form-control" id="email" v-model="email">
                     </div>
                   </div>
-                  <div class="form-group row">
-                      <div class="col-sm-6">
-                        <label class="control-label col-sm-4" for="tel">เบอร์โทร:</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="tel" v-model="tel">
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <label class="control-label col-sm-4" for="tel">เงินเดือน:</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="tel" v-model="tel">
-                        </div>
-                      </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-4" for="tel">เบอร์โทร:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="tel" v-model="tel">
+                    </div>
                   </div>
                 </div>
                 <div style="margin-top:10px">
@@ -84,16 +82,18 @@
                       <th>#</th>
                       <th>ชื่อ-นามสกุล</th>
                       <th>เพศ</th>
-                      <th>ติดต่อ</th>
+                      <th>อีเมล</th>
+                      <th>อายุ</th>
                       <th>แก้ไข/ลบ</th>
                   </tr>
                 </thead>
                 <tbody >
                     <tr v-for="i in dataTable">
                       <td> {{i.id}}</td>
-                      <td> {{i.name}} </td>
-                      <td> {{i.sex}} </td>
-                      <td> {{i.email}} {{i.tel}} </td>
+                      <td>  {{i.firstname}} {{i.lastname}} </td>
+                      <td> {{i.gender}} </td>
+                      <td> {{i.email}} </td>
+                      <td> {{i.age}} </td>
                       <td>
                         <button type="button" class="btn btn-warning" v-on:click="setForm()" >แก้ไข</button>
                         <button type="button" class="btn btn-danger" v-on:click="deleteUser(i.id)" >ลบ</button>
@@ -114,6 +114,7 @@
               dataTable:null,
               id:'',
               name:'',
+              type:'',
               sex:'',
               address:'',
               email:'',
