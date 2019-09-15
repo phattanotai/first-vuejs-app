@@ -3,14 +3,14 @@ function employeeModel(){
 //================================================================================================
 	this.get = function(callback){
 		var sql = `select 
-						 id_customer as id,
-						 name_customer as name,
+						 id_employee as id,
+						 name_employee as name,
 						 sex,
 						 address,
 						 tel,
 						 email 
 					from 
-						customer `;
+						employee `;
 		 
 		mysql.QueryDB(sql,function(err_query,data){
 	 		callback(err_query,data);
@@ -18,16 +18,16 @@ function employeeModel(){
 	}
 
 //================================================================================================
-	this.getCustometLimit = function(start,end,callback){
+	this.getLimit = function(start,end,callback){
 		 var sql = `select 
-						id_customer as id,
-						name_customer as name,
+						id_employee as id,
+						name_employee as name,
 						address,
 						tel,
 						sex,
 						email 
 					from 
-						customer 
+					 	employee 
 					LIMIT '`+start+`','`+end+`'`;
 
 		mysql.QueryDB(sql,function(err_query,data){
@@ -37,7 +37,7 @@ function employeeModel(){
 
 //================================================================================================
 	this.getIdMax = function(callback){
-		var sql = "select id  from customer";
+		var sql = "select Max(id) as MaxId  from employee";
 		mysql.QueryDB(sql,function(err_query,data){
 	 		callback(err_query,data);
 	 	});
@@ -46,50 +46,50 @@ function employeeModel(){
 //================================================================================================
 	this.getById = function(id,callback){
 		var sql =  `select 
-						id_customer as id,
-						name_customer as name,
+						id_employee as id,
+						name_employee as name,
 						address,
 						tel,
 						sex,
 						email 
 					from 
-						customer 
+						employee 
 					where 
-						id_customer = '`+id+`' `;
+						id_employee = '`+id+`' `;
 		mysql.QueryDB(sql,function(err_query,data){
 	 		callback(err_query,data);
 	 	});
 	}
 	this.getByName = function(name,callback){
 		var sql = `select 
-						id_customer as id,
-						name_customer as name,
+						id_employee as id,
+						name_employee as name,
 						address,
 						tel,
 						sex,
 						email  
 					from 
-						customer 
+						employee 
 					where 
-						name_customer = '`+name+`'`;
+						name_employee = '`+name+`'`;
 		mysql.QueryDB(sql,function(err_query,data){
 	 		callback(err_query,data);
 	 	});
 	}
 	this.getByText = function(text,callback){
 		var sql = `select 
-						id_customer as id,
-						name_customer as name,
+						id_employee as id,
+						name_employee as name,
 						address,
 						tel,
 						sex,
 						email 
 					from 
-						customer 
+						employee 
 					where 
-						name_customer like '%`+text+`%'
+						name_employee like '%`+text+`%'
 					or 
-						id_customer like '%`+text+`%'
+						id_employee like '%`+text+`%'
 					or
 						sex = '`+text+`'`;
 						
@@ -100,12 +100,14 @@ function employeeModel(){
 
 	this.getBySex = function(sex,callback){
 		var sql = `select 
-						id_customer as id,
-						name_customer as name,
+						id_employee as id,
+						name_employee as name,
 						address,
-						tel 
+						tel,
+						sex,
+						email 
 					from 
-						customer 
+						employee 
 					where 
 						sex = '`+sex+`'`;
 
@@ -115,20 +117,25 @@ function employeeModel(){
 	}
 
 	this.save = function(data,callback){
-		var sql = `INSERT INTO customer (
-						 name_customer,
-						 sex,
+		var sql = `INSERT INTO employee (
+						 name_employee,
 						 address,
+						 sex,
 						 tel,
 						 email,
-						 access_date) 
+						 access_date,
+						 id_employee_type,
+						 username,
+						 password) 
 					VALUES(
 						'`+data.name+`',
-						'`+data.sex+`',
 						'`+data.address+`',
+						'`+data.sex+`',
 						'`+data.tel+`',
 						'`+data.email+`',
-						CURDATE())`;
+						CURDATE(),1,
+						'`+data.username+`',
+						'`+data.password+`')`;
 
 		mysql.QueryDB(sql,function(err_query,data){
 	 		callback(err_query);
@@ -137,15 +144,15 @@ function employeeModel(){
 
 	this.update = function(id,data,callback){
 		var sql =  `UPDATE 
-						customer 
+						employee 
 					SET 
-							name_customer ='`+data.name+ `',
-							sex ='`+data.sex+ `',
-							address ='`+data.address+ `',
-							email = '`+data.email+ `',
-							tel ='`+data.tel+ `'	
+						name_employee ='`+data.name+ `',
+						sex ='`+data.sex+ `',
+						address ='`+data.address+ `',
+						email = '`+data.email+ `',
+						tel ='`+data.tel+ `'
 					where 
-							id_customer ='`+id+ `'`;
+						id_employee ='`+id+ `'`;
 
 
 		mysql.QueryDB(sql,function(err_query,data){
@@ -155,9 +162,9 @@ function employeeModel(){
 
 	this.delete = function(id,callback){
 		var sql = `DELETE FROM 
-						customer
+						employee
 				   where 
-						id_customer = '`+id+`'`;
+						id_employee = '`+id+`'`;
 
 		mysql.QueryDB(sql,function(err_query,data){
 	 		callback(err_query,data);
@@ -165,4 +172,4 @@ function employeeModel(){
 	}
 
 }
-module.exports = new meployeeModel();
+module.exports = new employeeModel();

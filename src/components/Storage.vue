@@ -94,26 +94,24 @@
 </template>
 
 <script>
-  export default  {
-    data() {
-      return {
-              dataTable:null,
-              id:'',
-              name:'',
-              type:'',
-              sex:'',
-              address:'',
-              email:'',
-              tel:'',
-              show:true,
-      }
-    },
-    methods: {
-      
-    },
-    computed: {
-
+export default {
+  data () {
+    return {
+      dataTable: null,
+      id: '',
+      name: '',
+      type: '',
+      sex: '',
+      address: '',
+      email: '',
+      tel: '',
+      show: true
     }
+  },
+  methods: {
+  },
+  computed: {
+  }
 }
 </script>
 

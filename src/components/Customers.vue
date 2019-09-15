@@ -46,12 +46,9 @@
                   </div>
                 </div>
                 <div style="margin-top:10px">
-                      <button type="button" class="btn btn-primary " v-on:click="save()" >บันทึก</button>
-
-                    <button type="button" class="btn btn-success " v-on:click="edit()" >แก้ไข</button>
-
+                     <button type="button" class="btn btn-primary " v-on:click="save()" >บันทึก</button>
+                     <button type="button" class="btn btn-success " v-on:click="edit()" >แก้ไข</button>
                      <button type="button" class="btn btn-info" v-on:click="reset()" >ล้าง</button>
-
                 </div>
               </form>
             </div>
@@ -67,7 +64,7 @@
                       <option>Name</option>
                     </select>
                     <input type="text" class="form-control " style="margin-left:5px;">
-                    <button class="btn btn-success" style="margin-left:5px;">ค้นหา</button> 
+                    <button class="btn btn-success" style="margin-left:5px;">ค้นหา</button>
                 </div>
               </div>
               <table class="table table-sm" style="margin-top:15px;" >
@@ -77,13 +74,12 @@
                       <th>ชื่อ-นามสกุล</th>
                       <th>ที่อยู่</th>
                       <th>เพศ</th>
-                      <th>อายุ</th>
                       <th>อีเมล</th>
                       <th>เบอร์โทร</th>
                       <th>แก้ไข/ลบ</th>
                   </tr>
                 </thead>
-                <tbody >
+                <tbody v-if="dataTable !== null">
                     <tr v-for="i in dataTable">
                       <td> {{i.id}}</td>
                       <td> {{i.name}}</td>
@@ -105,32 +101,40 @@
 </template>
 
 <script>
-  export default  {
-    data() {
-      return {
-              dataTable:null,
-              id:'',
-              name:'',
-              sex:'',
-              address:'',
-              email:'',
-              tel:'',
-              show:true,
-      }
-    },
-    methods: {
-      
-    },
-    computed: {
-
+import axios from 'axios'
+export default {
+  data () {
+    return {
+      dataTable: null,
+      id: '',
+      name: '',
+      sex: '',
+      address: '',
+      email: '',
+      tel: '',
+      show: false
     }
+  },
+  methods: {
+    laodData: function () {
+      axios.get('http://127.0.0.1:3000/customers/')
+        .then(response => {
+          this.dataTable = response.data.data
+          console.log(response.data.data)
+        })
+    }
+  },
+  computed: {
+  },
+  created: function () {
+    this.laodData ()
+  }
 }
 </script>
 
 <style scoped>
-.addButton{
+.addButton {
     margin:20px;
     float: right;
 }
-
 </style>

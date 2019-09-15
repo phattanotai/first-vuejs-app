@@ -32,7 +32,7 @@
                     </div>
                   </div>
                   <div class="form-group row">
-                    <div class="col-sm-6"> 
+                    <div class="col-sm-6">
                       <label class="control-label col-sm-4" for="email" >ส่วนลด:</label>
                       <div class="col-sm-10">
                           <input type="text" class="form-control" id="email" v-model="email">
@@ -87,26 +87,26 @@
 </template>
 
 <script>
-  export default  {
-    data() {
-      return {
-              dataTable:null,
-              id:'',
-              name:'',
-              type:'',
-              sex:'',
-              address:'',
-              email:'',
-              tel:'',
-              show:true,
-      }
-    },
-    methods: {
-      
-    },
-    computed: {
-
+export default {
+  data () {
+    return {
+      dataTable: null,
+      id: '',
+      name: '',
+      type: '',
+      sex: '',
+      address: '',
+      email: '',
+      tel: '',
+      show: true
     }
+  },
+  methods: {
+
+  },
+  computed: {
+
+  }
 }
 </script>
 

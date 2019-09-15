@@ -53,17 +53,12 @@
                           <input type="text" class="form-control" id="price" v-model="price">
                         </div>
                      </div>
-                    
                   </div>
-                  
                 </div>
                 <div style="margin-top:10px">
-                      <button type="button" class="btn btn-primary " v-on:click="save()" >บันทึก</button>
-
+                    <button type="button" class="btn btn-primary " v-on:click="save()" >บันทึก</button>
                     <button type="button" class="btn btn-success " v-on:click="edit()" >แก้ไข</button>
-
-                     <button type="button" class="btn btn-info" v-on:click="reset()" >ล้าง</button>
-
+                    <button type="button" class="btn btn-info" v-on:click="reset()" >ล้าง</button>
                 </div>
               </form>
             </div>
@@ -79,7 +74,7 @@
                       <option>Name</option>
                     </select>
                     <input type="text" class="form-control " style="margin-left:5px;">
-                    <button class="btn btn-success" style="margin-left:5px;">ค้นหา</button> 
+                    <button class="btn btn-success" style="margin-left:5px;">ค้นหา</button>
                 </div>
               </div>
               <table class="table table-sm" style="margin-top:15px;" >
@@ -93,7 +88,7 @@
                       <th>แก้ไข/ลบ</th>
                   </tr>
                 </thead>
-                <tbody >
+                <tbody>
                     <tr v-for="i in dataTable">
                       <td> {{i.id}}</td>
                       <td> {{i.name}} </td>
@@ -114,25 +109,25 @@
 </template>
 
 <script>
-  export default  {
-    data() {
-      return {
-              dataTable:null,
-              name:'',
-              detail:'',
-              width:'',
-              length:'',
-              height:'',
-              price:'',
-              show:true,
-      }
-    },
-    methods: {
-      
-    },
-    computed: {
-
+export default {
+  data () {
+    return {
+      dataTable: null,
+      name: '',
+      detail: '',
+      width: '',
+      length: '',
+      height: '',
+      price: '',
+      show: true
     }
+  },
+  methods: {
+
+  },
+  computed: {
+
+  }
 }
 </script>
 

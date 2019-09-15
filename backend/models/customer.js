@@ -16,7 +16,6 @@ function customerModel(){
 	 		callback(err_query,data);
 		 });
 	}
-
 //================================================================================================
 	this.getCustometLimit = function(start,end,callback){
 		 var sql = `select 
@@ -34,7 +33,6 @@ function customerModel(){
 	 		callback(err_query,data);
 		});
 	}
-
 //================================================================================================
 	this.getIdMax = function(callback){
 		mysql.connection();
@@ -43,7 +41,6 @@ function customerModel(){
 	 		callback(err_query,data);
 		 });
 	}
-
 //================================================================================================
 	this.getById = function(id,callback){
 		var sql =  `select 
@@ -61,6 +58,7 @@ function customerModel(){
 	 		callback(err_query,data);
 		 });
 	}
+//================================================================================================
 	this.getByName = function(name,callback){
 		mysql.connection();
 		var sql = `select 
@@ -78,7 +76,7 @@ function customerModel(){
 	 		callback(err_query,data);
 		 });
 	}
-
+//================================================================================================
 	this.getByText = function(text,callback){
 		var sql = `select 
 						id_customer as id,
@@ -100,7 +98,7 @@ function customerModel(){
 	 		callback(err_query,data);
 		 });
 	}
-
+//================================================================================================
 	this.getBySex = function(sex,callback){
 		var sql = `select 
 						id_customer as id,
@@ -116,7 +114,7 @@ function customerModel(){
 	 		callback(err_query,data);
 		 });
 	}
-
+//================================================================================================
 	this.save = function(data,callback){
 		var sql = `INSERT INTO customer (
 						 name_customer,
@@ -137,7 +135,7 @@ function customerModel(){
 	 		callback(err_query);
 		 });
 	}
-
+//================================================================================================
 	this.update = function(id,data,callback){
 		var sql =  `UPDATE 
 						customer 
@@ -155,7 +153,7 @@ function customerModel(){
 			callback(err_query);
 		});
 	}
-
+//================================================================================================
 	this.delete = function(id,callback){
 		var sql = `DELETE FROM 
 						customer
@@ -166,6 +164,8 @@ function customerModel(){
 	 		callback(err_query,data);
 		 });
 	}
+//================================================================================================
 
 }
+
 module.exports = new customerModel();

@@ -7,23 +7,23 @@
 </template>
 
 <script lang="js">
-  export default  {
-    name: 'home',
-    props: [],
-    mounted() {
+export default {
+  name: 'home',
+  props: [],
+  mounted () {
 
-    },
-    data() {
-      return {
-
-      }
-    },
-    methods: {
-
-    },
-    computed: {
+  },
+  data () {
+    return {
 
     }
+  },
+  methods: {
+
+  },
+  computed: {
+
+  }
 }
 </script>
 

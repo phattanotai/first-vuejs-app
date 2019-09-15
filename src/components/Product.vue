@@ -73,7 +73,7 @@
                       <option>Name</option>
                     </select>
                     <input type="text" class="form-control " style="margin-left:5px;">
-                    <button class="btn btn-success" style="margin-left:5px;">ค้นหา</button> 
+                    <button class="btn btn-success" style="margin-left:5px;">ค้นหา</button>
                 </div>
               </div>
               <table class="table table-sm" style="margin-top:15px;" >
@@ -108,26 +108,26 @@
 </template>
 
 <script>
-  export default  {
-    data() {
-      return {
-              dataTable:null,
-              id:'',
-              name:'',
-              type:'',
-              sex:'',
-              address:'',
-              email:'',
-              tel:'',
-              show:true,
-      }
-    },
-    methods: {
-      
-    },
-    computed: {
-
+export default {
+  data () {
+    return {
+      dataTable: null,
+      id: '',
+      name: '',
+      type: '',
+      sex: '',
+      address: '',
+      email: '',
+      tel: '',
+      show: true
     }
+  },
+  methods: {
+
+  },
+  computed: {
+
+  }
 }
 </script>
 

@@ -30,149 +30,143 @@
 </template>
 
 <script >
-    import axios from 'axios'
-    export default {
-        data(){
-           return{
-              userData:'',
-              firstname:'',
-              lastname:'',
-              gender:'',
-              email:'',
-              age:'',
-              id:'',
-              searchBy:''
-           }
-        },
-
-        methods: {
-          save:function(){
-               if(this.firstname !== '' || this.lastname !==''||this.email !==''||this.age !==''){
-                      var r = confirm("ยืนยันการลบ");
-                     if(r==ture){
-                            axios.post('/users/new', {
-                                  firstname: this.firstname,
-                                  lastname: this.lastname,
-                                  gender: this.gender,
-                                  email: this.email,
-                                  age: this.age
-                              })
-                              .then(function (response) {
-                                  alert(response.data);
-                              })
-                              .catch(function (error) {
-                                  currentObj.output = error;
-                              });
-                              this.reset();
-                      }
-               }else{
-                  alert("กรุณากรอกข้อมูลให้ครบถ้วน");
-               }
-          },
-          search:function(){
-              if(this.firstname !== ''){
-                  axios.get("users/firstname/"+this.firstname)
-                 .then(response => {
-                      this.userData = response.data;
-                      this.searchBy = "firstname";
-                  })
-                .catch(function (error) {
-                    currentObj.output = error;
-
-                });
-
-              }else if(this.lastname != ''){
-                axios.get("users/lastname/"+this.lastname)
-                  .then(response => {
-                      this.userData = response.data;
-                      this.searchBy = "lastname";
-                  })
-                  .catch(function (error) {
-                      currentObj.output = error;
-
-                  });
-              }else if(this.gender !== ''){
-                  axios.get("users/gender/"+this.gender)
-                  .then(response => {
-                      this.userData = response.data;
-                      this.searchBy = "gender";
-                  })
-                  .catch(function (error) {
-                      currentObj.output = error;
-
-                  });
-              }else if(this.email !== ''){
-                  axios.get("users/email/"+this.email)
-                  .then(response => {
-                      this.userData = response.data;
-                      this.searchBy = "email";
-                  })
-                  .catch(function (error) {
-                      currentObj.output = error;
-
-                  });
-              }else if(this.age !== ''){
-                  axios.get("users/age/"+this.age)
-                  .then(response => {
-                      this.userData = response.data;
-                      this.searchBy = "age";
-                  })
-                  .catch(function (error) {
-                      currentObj.output = error;
-
-                  });
-              }else{
-                  alert("ให้กรอกข้อมูล 1 ช่อง")
-              }
-          },
-          edit:function(){
-                if(this.firstname !== '' || this.lastname !==''||this.email !==''||this.age !==''){
-                    var r = confirm("ยืนยันการแก้ไข");
-                    if(r==ture){
-                            axios.put('users/',{
-                                  firstname: this.firstname,
-                                  lastname: this.lastname,
-                                  gender: this.gender,
-                                  email: this.email,
-                                  age: this.age,
-                                  id: this.id
-                            })
-                            .then(response => {
-                               alert(response.data);
-                               this.reset();
-                            });
-                    }
-                }else{
-                    alert("กรุณากรอกข้อมูลให้ครบถ้วน");
-                }
-          },
-          setForm(i){
-            this.firstname = i.firstname;
-            this.lastname = i.lastname;
-            this.gender = i.gender;
-            this.email = i.email;
-            this.age = i.age;
-            this.id = i.id;
-          },
-          reset(i){
-            this.firstname = '';
-            this.lastname = '';
-            this.gender = '';
-            this.email = '';
-            this.age = '';
-          },
-          deleteUser(id){
-               var r = confirm("ยืนยันการลบ");
-               if(r==ture){
-                axios.delete('users/' + id)
-                             .then(response => {
-                  alert(response.data);
-                  this.search();
-               });
-              }
-          }
-        }
+import axios from 'axios'
+export default {
+  data () {
+    return{
+      userData: '',
+      firstname: '',
+      lastname: '',
+      gender: '',
+      email: '',
+      age: '',
+      id: '',
+      searchBy: ''
     }
+  },
+  methods: {
+    save: function() {
+      if (this.firstname !== '' || this.lastname !== '' || this.email !== '' || this.age !== '') {
+        var r = confirm('ยืนยันการลบ')
+        if (r===ture) {
+          axios.post('/users/new', {
+            firstname: this.firstname,
+            lastname: this.lastname,
+            gender: this.gender,
+            email: this.email,
+            age: this.age
+          })
+            .then(function (response) {
+              alert(response.data)
+            })
+            .catch(function (error) {
+
+            })
+          this.reset()
+        }
+      } else {
+        alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+      }
+    },
+    search: function() {
+      if (this.firstname !== '') {
+          axios.get("users/firstname/"+this.firstname)
+          .then(response => {
+              this.userData = response.data;
+              this.searchBy = "firstname";
+          })
+          .catch(function (error) {
+              currentObj.output = error;
+          });
+
+      } else if (this.lastname != '') {
+          axios.get("users/lastname/"+this.lastname)
+          .then(response => {
+              this.userData = response.data;
+              this.searchBy = "lastname";
+          })
+          .catch(function (error) {
+              currentObj.output = error;
+          });
+      } else if (this.gender !== '') {
+          axios.get("users/gender/"+this.gender)
+           .then(response => {
+              this.userData = response.data;
+              this.searchBy = "gender";
+          })
+          .catch(function (error) {
+              currentObj.output = error;
+          });
+          } else if (this.email !== '') {
+              axios.get("users/email/"+this.email)
+              .then(response => {
+                  this.userData = response.data;
+                  this.searchBy = "email";
+              })
+              .catch(function (error) {
+                  currentObj.output = error;
+              });
+          } else if (this.age !== '') {
+              axios.get("users/age/"+this.age)
+              .then(response => {
+                  this.userData = response.data;
+                  this.searchBy = "age";
+              })
+              .catch(function (error) {
+                  currentObj.output = error;
+               });
+          } else {
+             alert("ให้กรอกข้อมูล 1 ช่อง")
+          }
+    },
+    edit: function() {
+          if (this.firstname !== '' || this.lastname !== '' || this.email !== '' || this.age !== '') {
+              var r = confirm("ยืนยันการแก้ไข");
+              if(r==ture){
+                  axios.put('users/',{
+                      firstname: this.firstname,
+                      lastname: this.lastname,
+                      gender: this.gender,
+                      email: this.email,
+                      age: this.age,
+                      id: this.id
+                  })
+                  .then(response => {
+                      alert(response.data);
+                      this.reset();
+                  });
+              }
+          }else{
+                alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+          }
+    },
+    setForm(i) {
+        this.firstname = i.firstname;
+        this.lastname = i.lastname;
+        this.gender = i.gender;
+        this.email = i.email;
+        this.age = i.age;
+        this.id = i.id;
+    },
+    reset(i) {
+      this.firstname = '';
+      this.lastname = '';
+      this.gender = '';
+      this.email = '';
+      this.age = '';
+    },
+    deleteUser(id) {
+      var r = confirm('ยืนยันการลบ');
+      if(r==ture){
+          axios.delete('users/' + id)
+          .then(response => {
+            alert(response.data)
+            this.search()
+          })
+      }
+    }
+  }
+}
 </script>
 
 <style scoped>
